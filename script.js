@@ -100,9 +100,11 @@ enterEl.addEventListener("click", function () {
         timestamp: formattedMsgTime(),
         content: msgValue
     };
-
-    push(saveMessageToDB, combinedMessage)
-    messageEl.value = "";
+    if(msgValue !== ""){
+        push(saveMessageToDB, combinedMessage)
+        messageEl.value = "";
+    }
+    
 });
 
 
