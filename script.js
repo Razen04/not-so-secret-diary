@@ -40,20 +40,16 @@ const closeEl = document.getElementById("close")
 //info tab
 
 // Open Popup Function
-/* infoEl.addEventListener("click", function(){
+infoEl.addEventListener("click", function(){
     const popupContainer = document.getElementById("popupContainer");
     popupContainer.style.display = "flex";
 })
- */
+
 // Close Popup Function
-/* closeEl.addEventListener("click", function(){
+closeEl.addEventListener("click", function(){
     const popupContainer = document.getElementById("popupContainer");
     popupContainer.style.display = "none";
 })
- */
-
-// Add event listener to the Close button
-/* document.getElementById("closeBtn").addEventListener("click", closePopup); */
 
 //Function for Message Timing
 function formattedMsgTime() {

@@ -72,14 +72,14 @@ button:hover {
 
 }
 
-ul {
+#container-el {
     list-style: none;
     display: flex;
     flex-direction: column-reverse;
 }
 
 
-ul li {
+ul li{
     margin-top: 10px;
     padding: 15px;
     min-height: 50px;
@@ -92,15 +92,6 @@ ul li {
     color: whitesmoke;
 
 }
-
-/* .no-style{
-    list-style: none;
-    margin-top: 10px;
-    background-color: black;
-    height: auto;
-    border-radius: 10px ;
-}
-
 
 .popup-container {
     display: none;
@@ -116,11 +107,11 @@ ul li {
 }
 
 .popup-content {
-    background-color: white;
+    background-color: whitesmoke;
     padding: 30px;
     border-radius: 8px;
     width: 50%;
-    height: 80%;
+    height: auto;
 }
 
 .popup-content i{
@@ -133,18 +124,25 @@ ul li {
 .popup-content p {
     padding-top: 20px;
     font-size: 30px;
-    color: black;
+    font-weight: bold;
+    color:black;
     background-color: white;
 }
 
-.close-btn {
+.popup-content p a{
+    text-decoration: underline;
+    color: blueviolet;
+    background-color: whitesmoke;
+}
+
+.popup-content i{
     cursor: pointer;
-    position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 20px;
+    font-size: 40px;
+
 }
- */
+
 .message-date{
     background-color: #40c463;
 }
@@ -158,4 +156,10 @@ ul li {
     }
     button, .text-area, ul li{
         font-size: 20px;
+    }
+    .popup-content{
+        height: auto;
+    }
+    .popup-content p {
+        font-size: 15px;
     }
