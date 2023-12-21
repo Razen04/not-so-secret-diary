@@ -73,6 +73,7 @@ function appendMessagesToLiEl() {
     const msgValue = messageEl.value;
     if (msgValue === "") {
         alert("Enter a valid message.");
+        location.reload();
     } else {
         let liEl = document.createElement("li");
         let dateSpan = document.createElement("span");
@@ -103,6 +104,8 @@ enterEl.addEventListener("click", function () {
     if(msgValue !== ""){
         push(saveMessageToDB, combinedMessage)
         messageEl.value = "";
+    }else{
+        location.reload();
     }
     
 });
