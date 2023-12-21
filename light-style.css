@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: #ffffff;
+}
+
+body{
+    transition: color 1s ease-in;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 40px auto;
+
+}
+
+.icons{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.text-area {
+    background-color: #f6f8fa;
+    border: 0;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 25px;
+    margin: 10px 0;
+    margin-top: 40px;
+    height: 160px;
+    flex-shrink: 0;
+}
+
+textarea::placeholder{
+    color: black;
+    font-size: larger;
+}
+
+button {
+    color: #ffffff;
+    background-color: #40c463;
+    border: 0;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bolder;
+    transition: all ease-in 0.2s;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #0969da;
+}
+
+.scrollable-container{
+    max-height: 550px;
+    overflow-y: auto; 
+}
+
+.scrollable-container::-webkit-scrollbar { 
+    display: none; 
+    
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+
+ul li {
+    margin-top: 10px;
+    padding: 15px;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 10px;
+    font-size: 25px;
+    background-color: #0969da;
+    color: white;
+
+}
+
+.message-date{
+    background-color: #0969da;
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+    .container{
+        width: 342px;
+    }
+    button, .text-area, ul li{
+        font-size: 20px;
+    }
