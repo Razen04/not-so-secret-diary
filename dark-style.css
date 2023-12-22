@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Nunito', sans-serif;
     -webkit-user-select: none;
     user-select: none;
 
@@ -26,7 +25,8 @@ body {
     font-size: 50px;
     line-height: 52px;
     letter-spacing: -1.5px;
-    color: #FFD700;
+    color: white;
+    font-family: 'Manrope', sans-serif;
 
 }
 
@@ -154,7 +154,6 @@ button:hover {
 
 .editor-toolbar {
     margin-top: 50px;
-    color: white;
     opacity: 1;
 
 }
@@ -163,12 +162,16 @@ button:hover {
     color: white !important;
 }
 
+.container .editor-toolbar a:hover{
+    color: black !important;
+}
 
 .container .CodeMirror{
-    background-color: black;
+    background-color: rgba(63, 60, 60, 0.452);
     color: white;
+    -webkit-user-select: none;
     user-select: none;
-
+    
 }
 
 .CodeMirror-scroll {
@@ -273,3 +276,4 @@ button:hover {
     .popup-content p {
         font-size: 15px;
     }
+}
