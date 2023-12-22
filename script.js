@@ -64,7 +64,7 @@ function formattedMsgTime() {
         hour12: false // Use 24-hour format
     };
 
-    return now.toLocaleString('en-US', options).replace(',', ''); // Remove comma after the year
+    return now.toLocaleString('en-IN', options).replace(',', '');
 }
 
 //Function to add elements to li
