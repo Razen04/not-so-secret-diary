@@ -16,19 +16,23 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" id="stylesheet" href="dark-style.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    
+    <link rel="stylesheet" href="github-markdown.css">
     <script src="script.js" type="module" defer></script>
+    
     <title>Not So Secret Diary</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Not So Secret Diary</h1>
+        <h1 class="special">Not So Secret Diary</h1>
         <div class="icons">
-            <i class="fa-solid fa-circle-info fa-2xl" id="info"></i>
+            <i class="fa-solid fa-circle-info fa-2xl" id="info" ></i>
             <i class="fa-solid fa-moon fa-2xl" id="modeIcon"></i>
             <i class="fa-solid fa-sun fa-2xl" id="modeIcon" style="display: none;"></i>
         </div>
+        
         <div class="popup-container" id="popupContainer">
             <div class="popup-content">
                 <i class="fa-solid fa-square-xmark fa-2xl" id="close"></i>
@@ -46,11 +50,15 @@
         </div>
         <textarea name="text-area" id="message-el" class="text-area" cols="30" rows="10"
             placeholder="Write your not so secret message here...."></textarea>
+            <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
         <button type="button" id="enter-el">Enter ↵</button>
         <div class="scrollable-container">
-            <ul id="container-el">
-                <!-- List of diaries will be dynamically generated here -->
-            </ul>
+            <div class="markdown-container"></div>
+                <ul id="container-el">
+                    
+                    <!-- List of diaries will be dynamically generated here -->
+                </ul>
+            </div>
         </div>
 
     </div>

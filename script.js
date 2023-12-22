@@ -1,3 +1,4 @@
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import {
     getDatabase,
@@ -10,6 +11,14 @@ const appSettings = {
         "https://not-so-secret-diary-default-rtdb.asia-southeast1.firebasedatabase.app/",
 };
 
+
+//Markdown-feature in Textarea
+
+
+var simplemde = new SimpleMDE({
+    element: document.getElementById("message-el")
+});
+simplemde.isPreviewActive();
 
 //Toggle between dark and light mode
 const modes = document.getElementById("modeIcon");
@@ -31,7 +40,7 @@ const database = getDatabase(app);
 const saveMessageToDB = ref(database, "secretMessage");
 
 // HTML elements
-const messageEl = document.getElementById("message-el");
+/* const messageEl = document.getElementById("message-el"); */
 const enterEl = document.getElementById("enter-el");
 const containerEl = document.getElementById("container-el");
 const infoEl = document.getElementById("info");
@@ -39,14 +48,13 @@ const closeEl = document.getElementById("close")
 
 //info tab
 
-// Open Popup Function
-infoEl.addEventListener("click", function(){
+infoEl.addEventListener("click", function () {
     const popupContainer = document.getElementById("popupContainer");
     popupContainer.style.display = "flex";
 })
 
 // Close Popup Function
-closeEl.addEventListener("click", function(){
+closeEl.addEventListener("click", function () {
     const popupContainer = document.getElementById("popupContainer");
     popupContainer.style.display = "none";
 })
@@ -70,12 +78,13 @@ function formattedMsgTime() {
 //Function to add elements to li
 
 function appendMessagesToLiEl() {
-    const msgValue = messageEl.value;
+    const msgValue = simplemde.value();
     if (msgValue === "") {
         alert("Enter a valid message.");
         location.reload();
     } else {
         let liEl = document.createElement("li");
+        liEl.className = "outside-li";
         let dateSpan = document.createElement("span");
         dateSpan.className = "message-date";
         dateSpan.textContent = formattedMsgTime();
@@ -94,20 +103,24 @@ enterEl.addEventListener("click", function () {
 
 //Adding input Field to database
 
-enterEl.addEventListener("click", function () {
-    containerEl.textContent = "";
-    let msgValue = messageEl.value;
-    const combinedMessage = {
-        timestamp: formattedMsgTime(),
-        content: msgValue
-    };
-    if(msgValue !== ""){
-        push(saveMessageToDB, combinedMessage)
-        messageEl.value = "";
-    }else{
-        location.reload();
-    }
-    
+document.addEventListener("DOMContentLoaded", function () {
+    // Your existing code
+    enterEl.addEventListener("click", function () {
+        containerEl.textContent = "";
+        let msgValue = simplemde.value();
+        const combinedMessage = {
+            timestamp: formattedMsgTime(),
+            content: marked.parse(msgValue)
+        };
+        if (msgValue.trim() !== "") {
+            push(saveMessageToDB, combinedMessage);
+            simplemde.value("");
+        } else {
+            location.reload();
+        }
+    });
+
+    // Other JavaScript code
 });
 
 
@@ -115,7 +128,7 @@ enterEl.addEventListener("click", function () {
 //Reloading the existing messages from database
 
 onValue(saveMessageToDB, function (snapshot) {
-    messageEl.textContent = "";
+    containerEl.innerHTML = "";
     if (snapshot.exists()) {
         let messagesInDB = Object.values(snapshot.val());
         for (let i = 0; i < messagesInDB.length; i++) {
@@ -123,12 +136,13 @@ onValue(saveMessageToDB, function (snapshot) {
             let messageContent = messageValue.content;
             let messageTimeStamp = messageValue.timestamp;
             let liEl = document.createElement("li");
+            liEl.className = "outside-li";
             let dateSpan = document.createElement("span");
             dateSpan.className = "message-date";
             dateSpan.textContent = messageTimeStamp;
             liEl.appendChild(dateSpan);
             liEl.appendChild(document.createElement("br"));
-            liEl.appendChild(document.createTextNode(messageContent));
+            liEl.innerHTML += messageContent;
             containerEl.appendChild(liEl);
         }
     } else {
@@ -136,6 +150,8 @@ onValue(saveMessageToDB, function (snapshot) {
     }
 }
 );
+
+console.log(typeof marked); // Should output "function"
 
 
 
