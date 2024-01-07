@@ -24,11 +24,11 @@ simplemde.isPreviewActive();
 const modes = document.getElementById("modeIcon");
 modes.addEventListener("click", function () {
     const styleSheet = document.getElementById("stylesheet");
-    if (styleSheet.getAttribute("href") === "dark-style.css") {
-        styleSheet.setAttribute("href", "light-style.css");
+    if (styleSheet.getAttribute("href") === "styles/dark-style.css") {
+        styleSheet.setAttribute("href", "styles/light-style.css");
         localStorage.setItem("theme", "light");
     } else {
-        styleSheet.setAttribute("href", "dark-style.css");
+        styleSheet.setAttribute("href", "styles/dark-style.css");
         localStorage.setItem("theme", "dark");
     };
 });
@@ -40,7 +40,7 @@ const database = getDatabase(app);
 const saveMessageToDB = ref(database, "secretMessage");
 
 // HTML elements
-/* const messageEl = document.getElementById("message-el"); */
+
 const enterEl = document.getElementById("enter-el");
 const containerEl = document.getElementById("container-el");
 const infoEl = document.getElementById("info");
@@ -69,7 +69,7 @@ function formattedMsgTime() {
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-        hour12: false // Use 24-hour format
+        hour12: false
     };
 
     return now.toLocaleString('en-IN', options).replace(',', '');
@@ -119,8 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
             location.reload();
         }
     });
-
-    // Other JavaScript code
 });
 
 
@@ -151,7 +149,6 @@ onValue(saveMessageToDB, function (snapshot) {
 }
 );
 
-console.log(typeof marked); // Should output "function"
 
 
 
