@@ -100,7 +100,7 @@ button:hover {
     background-color: white;
     padding: 30px;
     border-radius: 8px;
-    width: 50%;
+    width: 67%;
     height: auto;
 }
 
@@ -118,6 +118,7 @@ button:hover {
     font-weight: bold;
     color: black;
     background-color: white;
+    line-height: 2;
 }
 
 .popup-content p a {

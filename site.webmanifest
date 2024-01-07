@@ -1,14 +1,16 @@
 {
     "name": "Not-so-secret-diary",
-    "short_name": "Diary",
+    "short_name": "Secret Diary",
+    "start_url": "index.html",
+    "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "assets/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-512x512.png",
+            "src": "assets/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
