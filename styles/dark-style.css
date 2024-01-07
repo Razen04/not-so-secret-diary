@@ -238,6 +238,9 @@ button:hover {
     flex-direction: column-reverse;
 }
 
+#container-el p{
+    word-wrap: break-word;
+}
 
 
 .outside-li {
