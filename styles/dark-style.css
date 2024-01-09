@@ -243,6 +243,9 @@ button:hover {
     word-wrap: break-word;
 }
 
+#container-el a{
+    color: black;
+}
 
 .outside-li {
     margin-top: 10px;
