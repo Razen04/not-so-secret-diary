@@ -21,17 +21,34 @@ var simplemde = new SimpleMDE({
 simplemde.isPreviewActive();
 
 //Toggle between dark and light mode
-const modes = document.getElementById("modeIcon");
-modes.addEventListener("click", function () {
-    const styleSheet = document.getElementById("stylesheet");
-    if (styleSheet.getAttribute("href") === "styles/dark-style.css") {
-        styleSheet.setAttribute("href", "styles/light-style.css");
-        localStorage.setItem("theme", "light");
-    } else {
-        styleSheet.setAttribute("href", "styles/dark-style.css");
-        localStorage.setItem("theme", "dark");
-    };
+
+document.addEventListener("DOMContentLoaded", function () {
+    const moonIcon = document.querySelector(".moonIcon");
+    const sunIcon = document.querySelector(".sunIcon");
+
+    // Function to toggle dark mode and update icons
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const isDarkMode = document.body.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDarkMode);
+
+        // Update icons based on dark mode state
+        if (isDarkMode) {
+            // Dark mode is active, display sun icon
+            moonIcon.style.display = "none";
+            sunIcon.style.display = "inline";
+        } else {
+            // Dark mode is inactive, display moon icon
+            moonIcon.style.display = "inline";
+            sunIcon.style.display = "none";
+        }
+    }
+
+    // Event listener for clicking on the sun icon
+    sunIcon.addEventListener("click", toggleDarkMode);
+    moonIcon.addEventListener("click", toggleDarkMode);
 });
+
 
 
 
@@ -148,6 +165,7 @@ onValue(saveMessageToDB, function (snapshot) {
     }
 }
 );
+
 
 
 

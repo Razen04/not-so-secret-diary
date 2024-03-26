@@ -1,23 +1,52 @@
+:root {
+    --background-color: #fff;
+    --text-color: #000;
+    --button-background: #f6f8fa;
+    --button-text-color: #333;
+    --primary-color: #0969da;
+    --secondary-color: #40c463;
+    --textarea-color : #fff;
+}
+
+body.dark-mode {
+    --background-color: black;
+    --text-color: #fff;
+    --button-background: #000;
+    --button-text-color: #fff;
+    --primary-color: #40c463;
+    --secondary-color: #0969da;
+    --textarea-color : #111;
+
+}
+
 * {
     margin: 0;
     padding: 0;
     -webkit-user-select: none;
     user-select: none;
-
 }
 
 body {
-    transition: color 1s ease-in;
-    background-color: black;
+    transition: color 0.5s, background-color 0.5s;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
+
+.sunIcon {
+    display: none;
+}
+
+.moonIcon {
+    display: inline;
+}
+
+
 
 .container {
     display: flex;
     flex-direction: column;
     max-width: 1000px;
     margin: 40px auto;
-
-
 }
 
 .special {
@@ -25,23 +54,19 @@ body {
     font-size: 50px;
     line-height: 52px;
     letter-spacing: -1.5px;
-    color: white;
     font-family: 'Manrope', sans-serif;
     margin-bottom: -20px;
-
 }
 
 .icons {
     display: flex;
     justify-content: space-between;
-    color: whitesmoke;
     cursor: pointer;
 }
 
 .text-area {
-    background-color: #161b22;
-    color: whitesmoke;
-    border: none;
+    background-color: var(--button-background);
+    border: 0;
     padding: 15px;
     border-radius: 15px;
     font-size: 25px;
@@ -51,27 +76,41 @@ body {
     flex-shrink: 0;
 }
 
+.CodeMirror.cm-s-paper.CodeMirror-wrap.CodeMirror-empty{
+    padding: 0% !important;
+}
+
+.CodeMirror.cm-s-paper.CodeMirror-wrap.CodeMirror-focused{
+    padding: 0% !important;
+}
+
+.CodeMirror-scroll {
+    background-color: var(--textarea-color);
+    color: var(--text-color);
+
+}
+
 textarea::placeholder {
-    color: whitesmoke;
-    font-size: 50px;
+    color: var(--text-color);
+    font-size: larger;
 }
 
 button {
-    color: black;
-    background-color: #1f6feb;
+    color: var(--button-text-color);
+    background-color: var(--primary-color);
     border: 0;
     padding: 15px;
     border-radius: 15px;
     font-size: 50px;
     text-align: center;
     margin-bottom: 15px;
-    font-weight: bolder;
-    transition: all ease-in 0.2s;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: #40c463;
+    background-color: var(--secondary-color);
 }
 
 .scrollable-container {
@@ -81,9 +120,7 @@ button:hover {
 
 .scrollable-container::-webkit-scrollbar {
     display: none;
-
 }
-
 
 .popup-container {
     display: none;
@@ -100,10 +137,10 @@ button:hover {
 }
 
 .popup-content {
-    background-color: white;
+    background-color: var(--background-color);
     padding: 30px;
     border-radius: 8px;
-    width: 68%;
+    width: 67%;
     height: auto;
 }
 
@@ -119,67 +156,30 @@ button:hover {
     padding-top: 20px;
     font-size: 30px;
     font-weight: bold;
-    color: black;
-    background-color: white;
     line-height: 2;
 }
 
 .popup-content p a {
     text-decoration: underline;
-    color: blueviolet;
-    background-color: whitesmoke;
 }
 
-.popup-content i {
+.close-btn {
     cursor: pointer;
+    position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 40px;
-
+    font-size: 20px;
 }
 
 .message-date {
-    background-color: #40c463;
-}
-
-.CodeMirror {
-    height: auto;
-    min-height: 300px;
-    border: 1px solid #ddd;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    padding: 10px;
-    font: inherit;
-    z-index: 1;
-    background-color: black;
+    background-color: var(--primary-color);
 }
 
 .editor-toolbar {
     margin-top: 50px;
-    opacity: 1;
-
+    background-color: white;
+    color: var(--text-color);
 }
-
-.container .editor-toolbar a {
-    color: white !important;
-}
-
-.container .editor-toolbar a:hover{
-    color: black !important;
-}
-
-.container .CodeMirror{
-    background-color: rgba(63, 60, 60, 0.452);
-    color: white;
-    -webkit-user-select: none;
-    user-select: none;
-    
-}
-
-.CodeMirror-scroll {
-    border: none;
-}
-
 
 /* Markeddown global styling */
 
@@ -196,8 +196,8 @@ button:hover {
 .markdown-container blockquote,
 .markdown-container strong,
 .markdown-container em {
-    background-color: #40c463;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .markdown-container strong {
@@ -219,10 +219,7 @@ button:hover {
     margin-left: 20px;
 }
 
-.outside-li ul {
-    margin-left: 40px;
-}
-
+.outside-li ul,
 .outside-li ol {
     margin-left: 40px;
 }
@@ -230,7 +227,7 @@ button:hover {
 .markdown-container ul li,
 .markdown-container ol li {
     margin-top: 10px;
-    background-color: #40c463;
+    background-color: var(--primary-color);
 }
 
 #container-el {
@@ -239,12 +236,12 @@ button:hover {
     flex-direction: column-reverse;
 }
 
-#container-el p{
+#container-el p {
     word-wrap: break-word;
 }
 
-#container-el a{
-    color: black;
+#container-el a {
+    color: var(--text-color);
 }
 
 .outside-li {
@@ -256,11 +253,9 @@ button:hover {
     border: none;
     border-radius: 10px;
     font-size: 25px;
-    background-color: #40c463;
-    color: white;
-
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
-
 
 @media only screen and (max-width: 767px) {
     body {
