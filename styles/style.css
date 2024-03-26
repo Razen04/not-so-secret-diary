@@ -6,6 +6,7 @@
     --primary-color: #0969da;
     --secondary-color: #40c463;
     --textarea-color : #fff;
+    --message-color :  #dcf8c6;
 }
 
 body.dark-mode {
@@ -16,6 +17,7 @@ body.dark-mode {
     --primary-color: #40c463;
     --secondary-color: #0969da;
     --textarea-color : #111;
+    --message-color : #0969da;
 
 }
 
@@ -76,6 +78,9 @@ body {
     flex-shrink: 0;
 }
 
+.CodeMirror.cm-s-paper.CodeMirror-wrap{
+    padding: 0% !important;
+}
 .CodeMirror.cm-s-paper.CodeMirror-wrap.CodeMirror-empty{
     padding: 0% !important;
 }
@@ -93,6 +98,17 @@ body {
 textarea::placeholder {
     color: var(--text-color);
     font-size: larger;
+}
+
+#name-input{
+    padding: 10px;
+    width: fit-content;
+    margin-bottom: 20px;
+    border: 2px solid var(--text-color);
+    border-radius: 5px;
+    font-size: larger;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 button {
@@ -244,6 +260,29 @@ button:hover {
     color: var(--text-color);
 }
 
+.message-item {
+    margin-bottom: 10px;
+}
+
+.sender-name {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.message-bubble {
+    background-color: var(--message-color);
+    padding: 10px;
+    font-size: 30px;
+    word-wrap: break-word;
+}
+
+.message-timestamp {
+    background-color: var(--message-color);
+    font-size: 15px;
+    color: var(--text-color);
+    padding: 10px;
+}
+
 .outside-li {
     margin-top: 10px;
     padding: 15px;
@@ -251,8 +290,8 @@ button:hover {
     display: flex;
     flex-direction: column;
     border: none;
+    font-size: 30px;
     border-radius: 10px;
-    font-size: 25px;
     background-color: var(--primary-color);
     color: var(--text-color);
 }
