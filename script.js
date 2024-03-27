@@ -32,10 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isDarkMode) {
             moonIcon.style.display = "none";
             sunIcon.style.display = "inline";
+            localStorage.setItem("theme", "dark");
         } else {
             moonIcon.style.display = "inline";
             sunIcon.style.display = "none";
+            localStorage.removeItem("theme");
         }
+        
     }
 
     // Event listener for clicking on the sun icon
