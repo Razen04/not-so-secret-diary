@@ -21,6 +21,16 @@
     <link rel="stylesheet" id="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(function (OneSignal) {
+            OneSignal.init({
+                appId: "1887defe-92db-40f9-ac70-acf691f30cfe",
+            });
+        });
+    </script>
+
     <script src="script.js" type="module" defer></script>
 
     <title>Not So Secret Diary</title>
@@ -32,7 +42,7 @@
         <div class="icons">
             <i class="fa-solid fa-circle-info fa-2xl" id="info"></i>
             <i class="fa-solid fa-moon fa-2xl moonIcon"></i>
-            <i class="fa-solid fa-sun fa-2xl sunIcon" ></i>
+            <i class="fa-solid fa-sun fa-2xl sunIcon"></i>
         </div>
 
         <div class="popup-container" id="popupContainer">
