@@ -79,18 +79,31 @@ body {
 
 .CodeMirror.cm-s-paper.CodeMirror-wrap{
     padding: 0% !important;
+    border-bottom: 1px solid rgb(189, 180, 180);
+    border-left: 1px solid rgb(189, 180, 180);
+    border-right: 1px solid rgb(189, 180, 180);
+    border-top: none;
 }
 .CodeMirror.cm-s-paper.CodeMirror-wrap.CodeMirror-empty{
     padding: 0% !important;
+    border-bottom: 1px solid rgb(189, 180, 180);
+    border-left: 1px solid rgb(189, 180, 180);
+    border-right: 1px solid rgb(189, 180, 180);
+    border-top: none;
 }
 
 .CodeMirror.cm-s-paper.CodeMirror-wrap.CodeMirror-focused{
     padding: 0% !important;
+    border-bottom: 1px solid rgb(189, 180, 180);
+    border-left: 1px solid rgb(189, 180, 180);
+    border-right: 1px solid rgb(189, 180, 180);
+    border-top: none;
 }
 
 .CodeMirror-scroll {
     background-color: var(--textarea-color);
     color: var(--text-color);
+    
 
 }
 
