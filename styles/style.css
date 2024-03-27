@@ -1,15 +1,4 @@
 :root {
-    --background-color: #fff;
-    --text-color: #000;
-    --button-background: #f6f8fa;
-    --button-text-color: #333;
-    --primary-color: #0969da;
-    --secondary-color: #40c463;
-    --textarea-color : #fff;
-    --message-color :  #dcf8c6;
-}
-
-body.dark-mode {
     --background-color: black;
     --text-color: #fff;
     --button-background: #000;
@@ -18,6 +7,17 @@ body.dark-mode {
     --secondary-color: #0969da;
     --textarea-color : #111;
     --message-color : #0969da;
+}
+
+body.light-mode {
+    --background-color: #fff;
+    --text-color: #000;
+    --button-background: #f6f8fa;
+    --button-text-color: #333;
+    --primary-color: #0969da;
+    --secondary-color: #40c463;
+    --textarea-color : #fff;
+    --message-color :  #dcf8c6;
 
 }
 

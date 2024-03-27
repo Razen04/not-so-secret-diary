@@ -26,16 +26,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const moonIcon = document.querySelector(".moonIcon");
     const sunIcon = document.querySelector(".sunIcon");
     function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-        const isDarkMode = document.body.classList.contains("dark-mode");
-        localStorage.setItem("darkMode", isDarkMode);
+        document.body.classList.toggle("light-mode");
+        const isLightMode = document.body.classList.contains("light-mode");
+        localStorage.setItem("lightMode", isLightMode);
         if (isDarkMode) {
-            moonIcon.style.display = "none";
-            sunIcon.style.display = "inline";
-            localStorage.setItem("theme", "dark");
-        } else {
             moonIcon.style.display = "inline";
             sunIcon.style.display = "none";
+            localStorage.setItem("theme", "light");
+        } else {
+            moonIcon.style.display = "none";
+            sunIcon.style.display = "inline";
             localStorage.removeItem("theme");
         }
         
