@@ -70,7 +70,6 @@ body {
     background-color: var(--button-background);
     border: 0;
     padding: 15px;
-    border-radius: 15px;
     font-size: 25px;
     margin: 10px 0;
     margin-top: 40px;
@@ -104,8 +103,7 @@ textarea::placeholder {
     padding: 10px;
     width: fit-content;
     margin-bottom: 20px;
-    border: 2px solid var(--text-color);
-    border-radius: 5px;
+    border:1px solid grey;
     font-size: larger;
     background-color: var(--background-color);
     color: var(--text-color);
@@ -116,7 +114,6 @@ button {
     background-color: var(--primary-color);
     border: 0;
     padding: 15px;
-    border-radius: 15px;
     font-size: 50px;
     text-align: center;
     margin-bottom: 15px;
@@ -302,7 +299,7 @@ button:hover {
     }
 
     .container {
-        width: 342px;
+        width: 380px;
     }
 
     button,
@@ -317,5 +314,13 @@ button:hover {
 
     .popup-content p {
         font-size: 15px;
+    }
+
+    .message-bubble{
+        font-size: 15px;
+    }
+
+    #name-input{
+        width: 358px;
     }
 }
