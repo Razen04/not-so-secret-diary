@@ -92,7 +92,7 @@ function formattedMsgTime() {
 
 // Function to append messages to the list
 function appendMessagesToLiEl(messageContent, messageTimeStamp, messageUsername) {
-    let liEl = document.createElement("li");
+    let liEl = document.createElement("div");
     liEl.className = "message-item"; // Apply a class for styling
 
     // Create and append sender's name
@@ -104,7 +104,7 @@ function appendMessagesToLiEl(messageContent, messageTimeStamp, messageUsername)
     // Create and append message content
     let messageBubble = document.createElement("div");
     messageBubble.className = "message-bubble";
-    messageBubble.innerHTML = marked(messageContent);
+    messageBubble.innerHTML = marked(messageContent.replace(/\n/g, "<br>"));
     liEl.appendChild(messageBubble);
 
     // Create and append message timestamp
