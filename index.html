@@ -20,8 +20,10 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" id="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
 
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    
     <script>
         window.OneSignalDeferred = window.OneSignalDeferred || [];
         OneSignalDeferred.push(function (OneSignal) {
@@ -60,10 +62,10 @@
 
             </div>
         </div>
-        <textarea name="text-area" id="message-el" class="text-area" cols="30" rows="10"
-            placeholder="Write your not so secret message here...."></textarea>
+        <textarea name="text-area" id="message-el" class="text-area" cols="30" rows="10"></textarea>
         <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
         <input type="text" id="name-input" placeholder="Your Name (Optional)">
+        <h1 id="total-entries"></h1>
         <button type="button" id="enter-el">Enter ↵</button>
         <div class="scrollable-container">
             <div class="markdown-container"></div>
@@ -75,6 +77,8 @@
     </div>
 
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
 
 </body>

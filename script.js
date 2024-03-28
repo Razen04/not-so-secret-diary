@@ -11,12 +11,18 @@ const appSettings = {
         "https://not-so-secret-diary-default-rtdb.asia-southeast1.firebasedatabase.app/",
 };
 
-
 //Markdown-feature in Textarea
 
 
 var simplemde = new SimpleMDE({
-    element: document.getElementById("message-el")
+    element: document.getElementById("message-el"),
+    placeholder: "Write your not so secret message here....",
+    hideIcons: ["fullscreen","side-by-side","image"],
+    indentWithTabs: true,
+    showIcons: ["code", "table"],
+    renderingConfig: {
+		codeSyntaxHighlighting: false,
+	},
 });
 simplemde.isPreviewActive();
 
@@ -60,6 +66,7 @@ const containerEl = document.getElementById("container-el");
 const infoEl = document.getElementById("info");
 const closeEl = document.getElementById("close");
 let username = document.getElementById('name-input');
+let totalEntries = document.getElementById('total-entries')
 
 //info tab
 
@@ -104,7 +111,7 @@ function appendMessagesToLiEl(messageContent, messageTimeStamp, messageUsername)
     // Create and append message content
     let messageBubble = document.createElement("div");
     messageBubble.className = "message-bubble";
-    messageBubble.innerHTML = marked(messageContent.replace(/\n/g, "<br>"));
+    messageBubble.innerHTML = messageContent;
     liEl.appendChild(messageBubble);
 
     // Create and append message timestamp
@@ -118,6 +125,7 @@ function appendMessagesToLiEl(messageContent, messageTimeStamp, messageUsername)
 }
 
 
+
 // Adding message to list function
 enterEl.addEventListener("click", function () {
     const msgValue = simplemde.value();
@@ -127,17 +135,16 @@ enterEl.addEventListener("click", function () {
         return; // Exit the function early if the message is empty
     }
 
-    console.log(msgValue)
-
     // Get the username from the input field
     const usernameValue = username.value.trim();
     const name = usernameValue !== "" ? usernameValue : "Anonymous";
+
 
     // Create the combined message object
     const combinedMessage = {
         sender: name,
         timestamp: formattedMsgTime(),
-        content: msgValue
+        content: marked(msgValue)
     };
 
     // Push the message to the database
@@ -151,16 +158,21 @@ enterEl.addEventListener("click", function () {
 // Reloading the existing messages from the database
 onValue(saveMessageToDB, function (snapshot) {
     containerEl.innerHTML = "";
+    let totalCount = 0;
     if (snapshot.exists()) {
         const messagesInDB = Object.values(snapshot.val());
+        totalCount = messagesInDB.length;
         messagesInDB.forEach(message => {
             const sender = message.sender || "Anonymous";
-            appendMessagesToLiEl(message.content, message.timestamp,sender);
+            appendMessagesToLiEl(marked(message.content.replace(/\n/g, "<br>")), message.timestamp,sender);
+            
         });
     } else {
         containerEl.innerHTML = "No messages to be displayed yet...";
     }
+    totalEntries.textContent = "Total Entries Made: " + totalCount;
 });
+
 
 
 

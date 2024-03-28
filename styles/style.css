@@ -263,6 +263,7 @@ button:hover {
 }
 
 #container-el p {
+    width: 100%;
     word-wrap: break-word;
 }
 
@@ -272,6 +273,7 @@ button:hover {
 
 .message-item {
     margin-bottom: 10px;
+    overflow-x: hidden;
 }
 
 .sender-name {
@@ -304,6 +306,10 @@ button:hover {
     border-radius: 10px;
     background-color: var(--primary-color);
     color: var(--text-color);
+}
+
+#total-entries{
+    margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 767px) {
