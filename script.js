@@ -17,12 +17,12 @@ const appSettings = {
 var simplemde = new SimpleMDE({
     element: document.getElementById("message-el"),
     placeholder: "Write your not so secret message here....",
-    hideIcons: ["fullscreen","side-by-side","image"],
+    hideIcons: ["fullscreen", "side-by-side", "image"],
     indentWithTabs: true,
     showIcons: ["code", "table"],
     renderingConfig: {
-		codeSyntaxHighlighting: false,
-	},
+        codeSyntaxHighlighting: false,
+    },
 });
 simplemde.isPreviewActive();
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sunIcon.style.display = "inline";
             localStorage.removeItem("theme");
         }
-        
+
     }
 
     // Event listener for clicking on the sun icon
@@ -66,7 +66,8 @@ const containerEl = document.getElementById("container-el");
 const infoEl = document.getElementById("info");
 const closeEl = document.getElementById("close");
 let username = document.getElementById('name-input');
-let totalEntries = document.getElementById('total-entries')
+let totalEntries = document.getElementById('total-entries');
+
 
 //info tab
 
@@ -120,15 +121,19 @@ function appendMessagesToLiEl(messageContent, messageTimeStamp, messageUsername)
     timestampSpan.textContent = messageTimeStamp;
     liEl.appendChild(timestampSpan);
 
+
     // Append the message element to the container
     containerEl.appendChild(liEl);
 }
 
 
 
+
 // Adding message to list function
 enterEl.addEventListener("click", function () {
     const msgValue = simplemde.value();
+    const sanitizedContent = DOMPurify.sanitize(msgValue);
+
     if (msgValue.trim() === "") {
         alert("Enter a valid message.");
         location.reload();
@@ -137,14 +142,15 @@ enterEl.addEventListener("click", function () {
 
     // Get the username from the input field
     const usernameValue = username.value.trim();
-    const name = usernameValue !== "" ? usernameValue : "Anonymous";
+    const sanitizedUserName = DOMPurify.sanitize(usernameValue);
 
+    const name = sanitizedUserName !== "" ? sanitizedUserName : "Anonymous";
 
     // Create the combined message object
     const combinedMessage = {
         sender: name,
         timestamp: formattedMsgTime(),
-        content: marked(msgValue)
+        content: marked(sanitizedContent)
     };
 
     // Push the message to the database
@@ -164,14 +170,27 @@ onValue(saveMessageToDB, function (snapshot) {
         totalCount = messagesInDB.length;
         messagesInDB.forEach(message => {
             const sender = message.sender || "Anonymous";
-            appendMessagesToLiEl(marked(message.content.replace(/\n/g, "<br>")), message.timestamp,sender);
-            
+            appendMessagesToLiEl(marked(message.content.replace(/\n/g, "<br>")), message.timestamp, sender);
         });
     } else {
         containerEl.innerHTML = "No messages to be displayed yet...";
     }
     totalEntries.textContent = "Total Entries Made: " + totalCount;
 });
+
+
+// Fetch old entries and their unique IDs from the database
+
+onValue(saveMessageToDB, (snapshot) => {
+        const entries = snapshot.val();
+        if (entries) {
+            Object.keys(entries).forEach((entryId) => {
+                console.log(`Entry ID: ${entryId}`);
+            });
+        }
+});
+
+
 
 
 

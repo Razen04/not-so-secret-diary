@@ -5,8 +5,8 @@
     --button-text-color: #fff;
     --primary-color: #40c463;
     --secondary-color: #0969da;
-    --textarea-color : #111;
-    --message-color : #0969da;
+    --textarea-color: #111;
+    --message-color: #0969da;
 }
 
 body.light-mode {
@@ -16,8 +16,8 @@ body.light-mode {
     --button-text-color: #333;
     --primary-color: #0969da;
     --secondary-color: #40c463;
-    --textarea-color : #fff;
-    --message-color :  #dcf8c6;
+    --textarea-color: #fff;
+    --message-color: #dcf8c6;
 
 }
 
@@ -27,6 +27,26 @@ body.light-mode {
     -webkit-user-select: none;
     user-select: none;
 }
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+    background: var(--primary-color);
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--text-color);
+}
+
 
 body {
     transition: color 0.5s, background-color 0.5s;
@@ -77,14 +97,7 @@ body {
     flex-shrink: 0;
 }
 
-.CodeMirror.cm-s-paper.CodeMirror-wrap{
-    padding: 0% !important;
-    border-bottom: 1px solid rgb(189, 180, 180);
-    border-left: 1px solid rgb(189, 180, 180);
-    border-right: 1px solid rgb(189, 180, 180);
-    border-top: none;
-}
-.CodeMirror.cm-s-paper.CodeMirror-wrap.CodeMirror-empty{
+.CodeMirror.cm-s-paper.CodeMirror-wrap {
     padding: 0% !important;
     border-bottom: 1px solid rgb(189, 180, 180);
     border-left: 1px solid rgb(189, 180, 180);
@@ -92,7 +105,15 @@ body {
     border-top: none;
 }
 
-.CodeMirror.cm-s-paper.CodeMirror-wrap.CodeMirror-focused{
+.CodeMirror.cm-s-paper.CodeMirror-wrap.CodeMirror-empty {
+    padding: 0% !important;
+    border-bottom: 1px solid rgb(189, 180, 180);
+    border-left: 1px solid rgb(189, 180, 180);
+    border-right: 1px solid rgb(189, 180, 180);
+    border-top: none;
+}
+
+.CodeMirror.cm-s-paper.CodeMirror-wrap.CodeMirror-focused {
     padding: 0% !important;
     border-bottom: 1px solid rgb(189, 180, 180);
     border-left: 1px solid rgb(189, 180, 180);
@@ -103,7 +124,7 @@ body {
 .CodeMirror-scroll {
     background-color: var(--textarea-color);
     color: var(--text-color);
-    
+
 
 }
 
@@ -112,11 +133,11 @@ textarea::placeholder {
     font-size: larger;
 }
 
-#name-input{
+#name-input {
     padding: 10px;
     width: fit-content;
     margin-bottom: 20px;
-    border:1px solid grey;
+    border: 1px solid grey;
     font-size: larger;
     background-color: var(--background-color);
     color: var(--text-color);
@@ -144,9 +165,6 @@ button:hover {
     overflow-y: auto;
 }
 
-.scrollable-container::-webkit-scrollbar {
-    display: none;
-}
 
 .popup-container {
     display: none;
@@ -293,7 +311,11 @@ button:hover {
     font-size: 15px;
     color: var(--text-color);
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 
 .outside-li {
     margin-top: 10px;
@@ -308,7 +330,7 @@ button:hover {
     color: var(--text-color);
 }
 
-#total-entries{
+#total-entries {
     margin-bottom: 10px;
 }
 
@@ -335,11 +357,11 @@ button:hover {
         font-size: 15px;
     }
 
-    .message-bubble{
+    .message-bubble {
         font-size: 15px;
     }
 
-    #name-input{
+    #name-input {
         width: 359px;
     }
 }
