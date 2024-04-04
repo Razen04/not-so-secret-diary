@@ -181,14 +181,14 @@ onValue(saveMessageToDB, function (snapshot) {
 
 // Fetch old entries and their unique IDs from the database
 
-onValue(saveMessageToDB, (snapshot) => {
+/* onValue(saveMessageToDB, (snapshot) => {
         const entries = snapshot.val();
         if (entries) {
             Object.keys(entries).forEach((entryId) => {
                 console.log(`Entry ID: ${entryId}`);
             });
         }
-});
+}); */
 
 
 
