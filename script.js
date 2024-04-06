@@ -53,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+let lastEntryTime = 0;
+const timeoutDuration = 5 * 60 * 1000;
 
 
 const app = initializeApp(appSettings);
@@ -131,34 +133,41 @@ function appendMessagesToLiEl(messageContent, messageTimeStamp, messageUsername)
 
 // Adding message to list function
 enterEl.addEventListener("click", function () {
-    const msgValue = simplemde.value();
-    const sanitizedContent = DOMPurify.sanitize(msgValue);
+    const currentTime = Date.now();
 
-    if (msgValue.trim() === "") {
-        alert("Enter a valid message.");
-        location.reload();
-        return; // Exit the function early if the message is empty
+    if (currentTime - lastEntryTime >= timeoutDuration) {
+        const msgValue = simplemde.value();
+        const sanitizedContent = DOMPurify.sanitize(msgValue);
+
+        if (msgValue.trim() === "") {
+            alert("Enter a valid message.");
+            location.reload();
+            return;
+        }
+
+        const usernameValue = username.value.trim();
+        const sanitizedUserName = DOMPurify.sanitize(usernameValue);
+
+        const name = sanitizedUserName !== "" ? sanitizedUserName : "Anonymous";
+
+        const combinedMessage = {
+            sender: name,
+            timestamp: formattedMsgTime(),
+            content: marked(sanitizedContent)
+        };
+
+        push(saveMessageToDB, combinedMessage);
+
+        simplemde.value("");
+        username.value = "";
+
+        lastEntryTime = currentTime;
+    } else {
+        alert(`You must wait ${Math.ceil((timeoutDuration - (currentTime - lastEntryTime)) / 1000)} seconds before submitting another entry.`);
     }
 
-    // Get the username from the input field
-    const usernameValue = username.value.trim();
-    const sanitizedUserName = DOMPurify.sanitize(usernameValue);
 
-    const name = sanitizedUserName !== "" ? sanitizedUserName : "Anonymous";
 
-    // Create the combined message object
-    const combinedMessage = {
-        sender: name,
-        timestamp: formattedMsgTime(),
-        content: marked(sanitizedContent)
-    };
-
-    // Push the message to the database
-    push(saveMessageToDB, combinedMessage);
-
-    // Clear the message input field
-    simplemde.value("");
-    username.value = "";
 });
 
 // Reloading the existing messages from the database
