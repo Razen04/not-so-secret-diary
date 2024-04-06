@@ -11,6 +11,13 @@ const appSettings = {
         "https://not-so-secret-diary-default-rtdb.asia-southeast1.firebasedatabase.app/",
 };
 
+
+const config = {
+    ALLOWED_TAGS: [], 
+    ALLOWED_ATTR: []  
+};
+
+
 //Markdown-feature in Textarea
 
 
@@ -137,7 +144,7 @@ enterEl.addEventListener("click", function () {
 
     if (currentTime - lastEntryTime >= timeoutDuration) {
         const msgValue = simplemde.value();
-        const sanitizedContent = DOMPurify.sanitize(msgValue);
+        const sanitizedContent = DOMPurify.sanitize(msgValue, config);
 
         if (msgValue.trim() === "") {
             alert("Enter a valid message.");
@@ -146,7 +153,7 @@ enterEl.addEventListener("click", function () {
         }
 
         const usernameValue = username.value.trim();
-        const sanitizedUserName = DOMPurify.sanitize(usernameValue);
+        const sanitizedUserName = DOMPurify.sanitize(usernameValue, config);
 
         const name = sanitizedUserName !== "" ? sanitizedUserName : "Anonymous";
 
