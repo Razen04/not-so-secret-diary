@@ -26,7 +26,7 @@ var simplemde = new SimpleMDE({
     placeholder: "Write your not so secret message here....",
     hideIcons: ["fullscreen", "side-by-side", "image"],
     indentWithTabs: true,
-    showIcons: ["code", "table"],
+    showIcons: ["code"],
     renderingConfig: {
         codeSyntaxHighlighting: false,
     },
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 let lastEntryTime = 0;
-const timeoutDuration = 5 * 60 * 1000;
+const timeoutDuration = 1 * 60 * 1000;
 
 
 const app = initializeApp(appSettings);
